@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  def edit
-    @user = Users.new
+  def index
   end
 
 end
