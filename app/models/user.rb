@@ -7,8 +7,6 @@ class User < ApplicationRecord
   # ユーザー情報
   validates :nickname, presence: { message: "can't be blank" }
   validates :email, presence: true, uniqueness: true, format: { with: /\A\S+@\S+\.\S+\z/, message: "can't be blank" }
-  #  validates :password, presence: { message: "can't be blank" }
-  #  validates :password, confirmation: { message:"confirmation doesn't match Password" }
   validates :password, format: { with: /\A[a-z0-9]+\z/i, message: 'Include both letters and numbers' }, allow_nil: true
 
   # 本人情報確認
