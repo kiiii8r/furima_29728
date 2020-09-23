@@ -4,14 +4,14 @@
 
 | Column           | Type   | Options     |
 | ---------------- | ------ | ----------- |
-| nickname        | string | null: false |
+| nickname         | string | null: false |
 | email            | string | null: false |
 | first_name       | string | null: false |
-| last_name      | string | null: false |
+| last_name        | string | null: false |
 | first_name_kana  | string | null: false |
-| last_name_kana | string | null: false |
+| last_name_kana   | string | null: false |
 | password         | string | null: false |
-| birthday        | date   | null: false |
+| birthday         | date   | null: false |
 
 ### Association
 
@@ -25,9 +25,9 @@
 | name            | string     | null: false                     |
 | explanation     | text       | null: false                     |
 | category_id     | integer    | null: false                     |
-| derivery_fee_id | integer    | null: false                     |
+| derively_fee_id | integer    | null: false                     |
 | status_id       | integer    | null: false                     |
-| area_id         | integer    | null: false                     |
+| prefecture_id   | integer    | null: false                     |
 | days_id         | integer    | null: false                     |
 | price           | integer    | null: false                     |
 | user            | references | null: false, foreign_key: true  |
@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one    :user_product
 
-## user_products テーブル
+## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -50,7 +50,7 @@
 - belongs_to :product
 - has_one    :purchese
 
-## purcheses テーブル
+## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
