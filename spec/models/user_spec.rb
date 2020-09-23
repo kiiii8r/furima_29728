@@ -7,19 +7,23 @@ RSpec.describe User, type: :model do
     end
 
     # ユーザー情報
-    it 'nicknameが必須であること' do
+    it '全て正しく入力されれば登録できること' do
+      expect(@user).to be_valid
+    end
+
+    it 'nicknameがないと登録できない' do
       @user.nickname = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
 
-    it 'メールアドレスが必須であること' do
+    it 'メールアドレスがないと登録できない' do
       @user.email = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
-    it 'メールアドレスが一意性であること' do
+    it 'メールアドレスが一意性出ないと登録できない' do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
     end
@@ -30,20 +34,20 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include('Email is invalid')
     end
 
-    it 'パスワードが必須であること' do
+    it 'パスワードがないと登録できない' do
       @user.password = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
 
-    it 'パスワードが5文字以下では登録できないこと' do
+    it 'パスワードが5文字以下では登録できない' do
       @user.password = 'aaaaa'
       @user.password_confirmation = 'aaaaa'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
-    it 'パスワードは確認用を含めて2回入力すること' do
+    it 'パスワードは確認用を含めて2回入力しないと登録できない' do
       @user.password_confirmation = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
@@ -54,13 +58,13 @@ RSpec.describe User, type: :model do
     # end
 
     # 本人情報確認
-    it '苗字がない場合は登録できないこと' do
+    it '苗字がない場合は登録できない' do
       @user.first_name = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("First name can't be blank")
     end
 
-    it '名前がない場合は登録できないこと' do
+    it '名前がない場合は登録できない' do
       @user.last_name = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name can't be blank")
@@ -78,13 +82,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include('Last name Full-width characters')
     end
 
-    it '苗字カナがない場合は登録できないこと' do
+    it '苗字カナがない場合は登録できない' do
       @user.first_name_kana = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana can't be blank")
     end
 
-    it '氏名カナがない場合は登録できないこと' do
+    it '氏名カナがない場合は登録できない' do
       @user.last_name_kana = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name kana can't be blank")
@@ -126,7 +130,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters')
     end
 
-    it '生年月日が必須であること' do
+    it '生年月日がないと登録できない' do
       @user.birthday = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
