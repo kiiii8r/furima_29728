@@ -11,8 +11,7 @@ RSpec.describe User, type: :model do
     it "nicknameが必須であること" do
       @user.nickname = nil
       @user.valid?
-      binding.pry
-      expect(@user.errors.full_messages).to include("Name can't be blank")
+      expect(@user.errors.full_messages).to include("Nickname Nickname can't be blank")
     end
 
     it "メールアドレスが必須であること" do
@@ -38,16 +37,6 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
 
-    it "パスワードが6文字以上であること" do
-      @user.password = "aaaaaa"
-      @user.password_confirmation = "aaaaaa"
-      expect(@user).to be_valid?
-    end
-
-    it "パスワードは半角英数字混合であること" do
-    
-    end
-
     it "パスワードが5文字以下では登録できないこと" do
       @user.password ="aaaaa"
       @user.password_confirmation = "aaaaa"
@@ -69,25 +58,12 @@ RSpec.describe User, type: :model do
     end
   
     #本人情報確認
-    it "ユーザー本名が、名字と名前がそれぞれ必須であること" do
-    end
-
-    it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
-    end
-
-    it "ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること" do
-    end
-
-    it "ユーザー本名のフリガナは全角（カタカナ）で入力させること" do
-    end
 
     it "生年月日が必須であること" do
-      # @user.birthday = nil
-      # @user.valid?
-      # binding.pry
-      # expect(@user.errors.full_messages).to include("")
+      @user.birthday = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday Birth date can't be blank")
     end
-
 
   end
 end
