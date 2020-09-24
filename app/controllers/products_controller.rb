@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :redirect_root, except: :edit
+  before_action :require_login, only: :new, alert: 'You need to sign in or sign up before continuing.'
 
   def index
   end
@@ -18,8 +18,8 @@ class ProductsController < ApplicationController
 
   private
 
-def redirect_root
-  redirect_to root_path unless user_signed_in?
+def require_login
+  redirect_to user_session_path, alert: 'You need to sign in or sign up before continuing.' unless user_signed_in?
 end
 
 end
