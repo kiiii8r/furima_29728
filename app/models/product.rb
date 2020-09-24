@@ -6,7 +6,7 @@ class Product < ApplicationRecord
 
   validates :category_id, :day_id, :derively_fee_id, :prefecture_id, :status_id, numericality: { other_than: 1, message:"select" }
 
-  validetes :price, format: { with: /\A[0-9]+\z/, message: "Price Half-width number"}
+  validetes :price, format: { with: /\A[0-9]+\z/, message: "Price Half-width number"}, inclusion: { in: (300..9999999), message:"Out of setting range" }
 
   validates: :content, presence: true, unless: :was_attached?
 
