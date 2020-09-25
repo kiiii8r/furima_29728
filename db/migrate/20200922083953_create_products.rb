@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer    :derively_fee_id, null: false 
       t.integer    :status_id,       null: false 
       t.integer    :prefecture_id,   null: false 
-      t.integer    :days_id,         null: false 
+      t.integer    :day_id,         null: false 
       t.integer    :price,           null: false 
       t.references :user,            null: false, foreign_key: true
 
