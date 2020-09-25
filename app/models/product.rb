@@ -7,9 +7,9 @@ class Product < ApplicationRecord
   belongs_to_active_hash :status
   has_one_attached :image
 
-  validates :name, :explanation, :category, :derively_fee, :status, :prefecture, :day, :price, presence: { message:"can't be blank" }
+  validates :image, :name, :explanation, :category, :derively_fee, :status, :prefecture, :day, :price, presence: { message:"can't be blank" }
 
-  validates :category_id, :day_id, :derively_fee_id, :prefecture_id, :status_id, numericality: { other_than: 1, message:"select" }
+  validates :category_id, :day_id, :derively_fee_id, :prefecture_id, :status_id, numericality: { other_than: 0, message:"select" }
 
   validates :price, format: { with: /\A[0-9]+\z/, message: "Price Half-width number"}, inclusion: { in: (300..9999999), message:"Out of setting range" }
 end
