@@ -8,11 +8,11 @@ function price() {
     if (value >= 300 && value <= 9999999) {
       let fee = value * 0.1;
       let gains = value - fee;
-      add_tax.textContent = fee;
-      profit.textContent = gains;
+      add_tax.textContent = Math.floor(fee);
+      profit.textContent = Math.floor(gains);
     } else {
-      let fee = "0";
-      let gains = "0";
+      let fee = " ";
+      let gains = " ";
       add_tax.textContent = fee;
       profit.textContent = gains;
     }
