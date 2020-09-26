@@ -7,7 +7,7 @@ RSpec.describe Product, type: :model do
       @product.image = fixture_file_upload('public/images/test_image.png')
     end
 
-    # 出品情報
+    # 出品情報について
     it '必須項目を入力した上で出品ができる' do
       expect(@product).to  be_valid
     end
@@ -30,34 +30,35 @@ RSpec.describe Product, type: :model do
       expect(@product.errors.full_messages).to include("Explanation can't be blank")
     end
 
-    it 'カテゴリーの情報がないと登録できない' do
-      @product.category_id = nil
+    it 'カテゴリーのプルダウンが---だと登録できない' do
+      @product.category_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Category can't be blank")
+      expect(@product.errors.full_messages).to include("Category select")
     end
 
-    it '商品の状態についての情報がないと登録できない' do
-      @product.status = nil
+    it '商品の状態についてのプルダウンが---だと登録できない' do
+      @product.status_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Status can't be blank")
+      expect(@product.errors.full_messages).to include("Status select")
     end
 
-    it '配送料の負担についての情報がないと登録できない' do
-      @product.derively_fee = nil
+    it '配送料の負担についてのプルダウンが---だと登録できない' do
+      @product.derively_fee_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Derively fee can't be blank")
+      expect(@product.errors.full_messages).to include("Derively fee select")
     end
 
-    it '発送元の地域についての情報がないと登録できない' do
-      @product.prefecture = nil
+    it '発送元の地域についてのプルダウンが---だと登録できない' do
+      @product.prefecture_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Prefecture can't be blank")
+      expect(@product.errors.full_messages).to include("Prefecture select")
     end
 
-    it '発送までの日数についての情報がないと登録できない' do
-      @product.day = nil
+    it '発送までの日数についてのプルダウンが---だと登録できない' do
+      @product.day_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Day can't be blank")
+      binding.pry
+      expect(@product.errors.full_messages).to include("Day select")
     end
 
     it '価格についての情報がないと登録できない' do
