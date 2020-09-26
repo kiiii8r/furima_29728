@@ -2,21 +2,12 @@ class ProductsController < ApplicationController
   before_action :require_login, only: :new, alert: 'You need to sign in or sign up before continuing.'
 
   def index
-    @products = Product.all.order(id: "DESC")
   end
 
   def new
-    @product = Product.new
-
   end
 
   def create
-
-    product = Product.find(params[:id])
-
-    item = Product.find(params[:id])
-    render json:{ post: item }
-
     @product = Product.create(product_params)
     if @product.save
       redirect_to root_path
