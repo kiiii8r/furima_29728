@@ -9,9 +9,25 @@ class Product < ApplicationRecord
 
   belongs_to :user
 
-  validates :image, :name, :explanation, :category, :derively_fee, :status, :prefecture, :day, :price, presence: { message: "can't be blank" }
+  with_options presence: { message: "can't be blank" } do
+  validates :image
+  validates :name
+  validates :explanation
+  validates :category_id
+  validates :derively_fee_id
+  validates :status_id
+  validates :prefecture_id
+  validates :day_id
+  validates :price 
+  end
 
-  validates :category_id, :day_id, :derively_fee_id, :prefecture_id, :status_id, numericality: { other_than: 0, message: 'select' }
+  with_options numericality: { other_than: 0, message: "select" } do
+  validates :category_id
+  validates :day_id
+  validates :derively_fee_id
+  validates :prefecture_id
+  validates :status_id
+  end
 
   validates :price, format: { with: /\A[0-9]+\z/, message: 'Price Half-width number' }, inclusion: { in: (300..9_999_999), message: 'Out of setting range' }
 end

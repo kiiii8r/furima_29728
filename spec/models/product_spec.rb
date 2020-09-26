@@ -57,7 +57,6 @@ RSpec.describe Product, type: :model do
     it '発送までの日数についてのプルダウンが---だと登録できない' do
       @product.day_id = 0
       @product.valid?
-      binding.pry
       expect(@product.errors.full_messages).to include("Day select")
     end
 
