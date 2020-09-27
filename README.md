@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :products
-- has_many :user_products
+- has_many :addresses
 
 ## products テーブル
 
@@ -36,7 +36,7 @@
 ### Association
 
 - belongs_to :user
-- has_one    :user_product
+- has_one    :address
 
 ## purchases テーブル
 
@@ -65,4 +65,4 @@
 
 ### Association
 
-- belongs_to :user_product
+- belongs_to :address
