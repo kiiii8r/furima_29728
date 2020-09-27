@@ -18,10 +18,10 @@ class Product < ApplicationRecord
     validates :status_id
     validates :prefecture_id
     validates :day_id
-    validates :price 
+    validates :price
   end
 
-  with_options numericality: { other_than: 0, message: "select" } do
+  with_options numericality: { other_than: 0, message: 'select' } do
     validates :category_id
     validates :day_id
     validates :derively_fee_id

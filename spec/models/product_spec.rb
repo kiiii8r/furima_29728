@@ -33,31 +33,31 @@ RSpec.describe Product, type: :model do
     it 'カテゴリーのプルダウンが---だと登録できない' do
       @product.category_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Category select")
+      expect(@product.errors.full_messages).to include('Category select')
     end
 
     it '商品の状態についてのプルダウンが---だと登録できない' do
       @product.status_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Status select")
+      expect(@product.errors.full_messages).to include('Status select')
     end
 
     it '配送料の負担についてのプルダウンが---だと登録できない' do
       @product.derively_fee_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Derively fee select")
+      expect(@product.errors.full_messages).to include('Derively fee select')
     end
 
     it '発送元の地域についてのプルダウンが---だと登録できない' do
       @product.prefecture_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Prefecture select")
+      expect(@product.errors.full_messages).to include('Prefecture select')
     end
 
     it '発送までの日数についてのプルダウンが---だと登録できない' do
       @product.day_id = 0
       @product.valid?
-      expect(@product.errors.full_messages).to include("Day select")
+      expect(@product.errors.full_messages).to include('Day select')
     end
 
     it '価格についての情報がないと登録できない' do
