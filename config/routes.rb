@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "products#index" 
-end
+  resources :products, except: [:destroy]
+ end
