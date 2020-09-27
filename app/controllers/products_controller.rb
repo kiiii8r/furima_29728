@@ -10,12 +10,16 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.new
     if @product.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def edit
