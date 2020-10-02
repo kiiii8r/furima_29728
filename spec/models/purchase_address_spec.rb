@@ -47,7 +47,7 @@ RSpec.describe PurchaseAddress, type: :model do
     it '電話番号にハイフンがあると登録できない' do
       @purchase.phone_number = '000-0000-0000'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+      expect(@purchase.errors.full_messages).to include('Phone number is invalid')
     end
 
     it '郵便番号にハイフンがないと登録できない' do
