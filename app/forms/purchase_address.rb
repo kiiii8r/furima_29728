@@ -5,7 +5,7 @@ class PurchaseAddress
 
   with_options presence: true do
     validates :token
-    validates :postal_code, format: { with: /\d{3}-\d{4}/, message: "Input correctly" }
+    validates :postal_code, format: { with: /\d{3}-\d{4}/, message: 'Input correctly' }
     validates :prefecture_id, numericality: { other_than: 0, message: 'select' }
     validates :municipality
     validates :address
