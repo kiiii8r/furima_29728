@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :set_product, only: [:index, :create, :pay_item]
+  before_action :authenticate_user!
 
   def index
     if @product[:user_id] == current_user.id || @product.purchase.present?
@@ -38,4 +39,6 @@ class PurchasesController < ApplicationController
   def set_product
     @product = Product.find(params[:product_id])
   end
+
+  
 end
